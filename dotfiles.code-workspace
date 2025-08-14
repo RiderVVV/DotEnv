@@ -1,36 +1,15 @@
 {
   "folders": [
     {
-      "name": "Dotfiles",
+      "name": "Dotfiles Repository",
       "path": "."
     }
   ],
   "settings": {
-    "git.enabled": false,
-    "git.ignoredRepositories": [
-      "."
-    ],
+    "git.enabled": true,
     "files.exclude": {
-      "**/node_modules": true,
-      "**/.git": true,
-      "**/.svn": true,
-      "**/.hg": true,
-      "**/CVS": true,
       "**/.DS_Store": true,
-      "**/Thumbs.db": true,
-      ".cache": true,
-      ".local": true,
-      ".Trash": true,
-      "Applications": true,
-      "Desktop": true,
-      "Documents": true,
-      "Downloads": true,
-      "Dropbox": true,
-      "Library": true,
-      "Movies": true,
-      "Music": true,
-      "Pictures": true,
-      "Public": true
+      "**/Thumbs.db": true
     },
     "files.associations": {
       "*.zshrc": "shellscript",
@@ -98,6 +77,17 @@
         "command": "source",
         "args": ["~/.zsh.secrets"],
         "group": "build"
+      },
+      {
+        "label": "sync cursor config",
+        "type": "shell",
+        "command": "cp",
+        "args": ["-f", "~/.dotfiles/.config/cursor/settings.json", "~/Library/Application Support/Cursor/User/"],
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "silent"
+        }
       }
     ]
   }

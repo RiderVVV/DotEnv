@@ -1,0 +1,218 @@
+{
+  "workbench.startupEditor": "none",
+  "editor.fontSize": 18,
+  "php.validate.executablePath": "/Users/eric/soft/php7.1/bin",
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.unicodeHighlight.allowedCharacters": {
+    "类": true
+  },
+  // 编辑器样式
+  "editor.lineHeight": 1.5,
+  "editor.cursorStyle": "line",
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.renderWhitespace": "selection",
+  "editor.renderControlCharacters": true,
+  "editor.scrollBeyondLastLine": false,
+  "editor.minimap.enabled": true,
+  "editor.letterSpacing": 0.5,
+  "editor.accessibilitySupport": "off",
+  // 代码功能
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "editor.smoothScrolling": true,
+  "editor.dragAndDrop": true,
+  "editor.mouseWheelZoom": true,
+  "editor.linkedEditing": true,
+  // 主题设置 - 从GoLand的One Dark Vivid主题匹配
+  "workbench.preferredDarkColorTheme": "One Dark Pro",
+  "workbench.preferredLightColorTheme": "One Dark Pro",
+  "workbench.colorTheme": "One Dark Pro",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  // 更新设置
+  "update.showReleaseNotes": false,
+  "screencastMode.fontSize": 38,
+  // Go语言设置 - 基于GoLand配置添加
+  "go.toolsManagement.autoUpdate": true,
+  "go.gopath": "~/Dropbox/bin/go",
+  "go.goroot": "/usr/local/go",
+  "go.formatTool": "goimports",
+  "go.useLanguageServer": true,
+  "go.lintTool": "golangci-lint",
+  "go.lintOnSave": "package",
+  // 字体设置
+  "editor.fontFamily": "MapleMono CN, Monaco, JetBrains Mono, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "400",
+  // 代码提示和补全
+  "editor.suggestSelection": "first",
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  // 括号和缩进设置
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.indentation": true,
+  "editor.guides.highlightActiveIndentation": true,
+  // 终端设置
+  "terminal.integrated.fontFamily": "MapleMono CN, Monaco",
+  "terminal.integrated.fontSize": 18,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorBlinking": true,
+  // 其他设置
+  "material-icon-theme.folders.customClones": [],
+  "sync.gist": "bb1107276bdb1776d0069796dd858a67",
+  "sync.forceUpload": true,
+  "gitlens.ai.model": "gemini:gemini-2.0-flash",
+  "workbench.productIconTheme": "el-vsc-v1-icons",
+  "cursor.cpp.enablePartialAccepts": true,
+  // 文件状态颜色 - 从GoLand复制
+  "workbench.colorCustomizations": {
+    "gitDecoration.addedResourceForeground": "#c3e887",
+    "gitDecoration.deletedResourceForeground": "#f77669",
+    "gitDecoration.modifiedResourceForeground": "#80cbc4",
+    "gitDecoration.untrackedResourceForeground": "#c3e887"
+  },
+  "projectManager.git.baseFolders": [
+    "/Users/eric/Dropbox/Src/go/donson",
+    "/Users/eric/Documents/Cline/MCP",
+    "/Users/eric/Dropbox/Src/personal",
+    "/Users/eric/Dropbox/Src/python",
+    "/Users/eric/Dropbox/Src/go/personal",
+    " /Users/eric/.claude-squad/worktrees"
+  ],
+  "update.releaseTrack": "prerelease",
+  "workbench.iconTheme": "vscode-icons",
+  "editor.wordWrap": "on",
+  "vsicons.dontShowNewVersionMessage": true,
+  "editorjumper.selectedIDE": "GoLand",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editorjumper.ideConfigurations": [
+    {
+      "name": "IDEA",
+      "isCustom": false,
+      "hidden": false,
+      "commandPath": null
+    },
+    {
+      "name": "WebStorm",
+      "isCustom": false,
+      "hidden": false,
+      "commandPath": null
+    },
+    {
+      "name": "PyCharm",
+      "isCustom": false,
+      "hidden": false,
+      "commandPath": null
+    },
+    {
+      "name": "GoLand",
+      "isCustom": false,
+      "hidden": false,
+      "commandPath": null
+    },
+    {
+      "name": "CLion",
+      "isCustom": false,
+      "hidden": false,
+      "commandPath": null
+    },
+    {
+      "name": "PhpStorm",
+      "isCustom": false,
+      "hidden": false,
+      "commandPath": null
+    },
+    {
+      "name": "RubyMine",
+      "isCustom": false,
+      "hidden": false,
+      "commandPath": null
+    },
+    {
+      "name": "Rider",
+      "isCustom": false,
+      "hidden": false,
+      "commandPath": null
+    },
+    {
+      "name": "Android Studio",
+      "isCustom": false,
+      "hidden": false,
+      "commandPath": null
+    },
+    {
+      "name": "Xcode",
+      "commandPath": null,
+      "isCustom": false,
+      "hidden": false
+    }
+  ],
+  "roo-cline.allowedCommands": [
+    "npm test",
+    "npm install",
+    "tsc",
+    "git log",
+    "git diff",
+    "git show"
+  ],
+  "cursor.composer.shouldChimeAfterChatFinishes": true,
+  "cursor.composer.shouldAllowCustomModes": true,
+  "kilo-code.allowedCommands": [
+    "npm test",
+    "npm install",
+    "tsc",
+    "git log",
+    "git diff",
+    "git show"
+  ],
+  "cursorStats.showDailyRemaining": true,
+  "cursorStats.showProgressBars": true,
+  "cursorStats.showTotalRequests": true,
+  "cursorStats.enableAlerts": false,
+  "cursorStats.excludeWeekends": true,
+  "cursorStats.enableStatusBarColors": false,
+  "makefile.configureOnOpen": true,
+  "cursor.general.globalCursorIgnoreList": [
+    "**/credentials.json",
+    "**/credentials.*.json",
+    "**/secret.json",
+    "**/secrets.json",
+    "**/*.key",
+    "**/*.pem",
+    "**/*.pfx",
+    "**/*.p12",
+    "**/*.crt",
+    "**/*.cer",
+    "**/id_rsa",
+    "**/id_dsa",
+    "**/.ssh/id_*"
+  ],
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  // --- 集成终端的美化和体验优化 ---
+  // 行高
+  "terminal.integrated.lineHeight": 1.2,
+  // 允许 Option 键作为 Meta 键，方便在单词间跳转
+  "terminal.integrated.macOptionIsMeta": true,
+
+  // --- 外部终端的配置 ---
+  // 告诉 VS Code，当需要打开“外部终端”时，就用 iTerm.app
+  "terminal.external.osxExec": "iTerm.app",
+  "window.commandCenter": true,
+  "application.shellEnvironmentResolutionTimeout": 30,
+  "biome.suggestInstallingGlobally": false,
+}

@@ -6,7 +6,7 @@
 set -e
 
 DOTFILES_DIR="$HOME/.dotfiles"
-PACKAGES=("shell" "git" "vim" "vscode" "ghostty" "zed" "secrets")
+PACKAGES=("shell" "git" "vim" "vscode" "ghostty" "zed" "secrets" "cursor")
 
 usage() {
     echo "用法: $0 [命令] [包名...]"
@@ -26,6 +26,7 @@ usage() {
     echo "  vscode   - VSCode 配置"
     echo "  ghostty  - Ghostty 终端配置"
     echo "  zed      - Zed 编辑器配置"
+    echo "  cursor   - Cursor 编辑器配置"
     echo "  secrets  - 密钥模板文件"
     echo ""
     echo "示例:"
