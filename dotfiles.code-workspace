@@ -1,0 +1,104 @@
+{
+  "folders": [
+    {
+      "name": "Dotfiles",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "git.enabled": false,
+    "git.ignoredRepositories": [
+      "."
+    ],
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      ".cache": true,
+      ".local": true,
+      ".Trash": true,
+      "Applications": true,
+      "Desktop": true,
+      "Documents": true,
+      "Downloads": true,
+      "Dropbox": true,
+      "Library": true,
+      "Movies": true,
+      "Music": true,
+      "Pictures": true,
+      "Public": true
+    },
+    "files.associations": {
+      "*.zshrc": "shellscript",
+      "*.bashrc": "shellscript",
+      "*.bash_profile": "shellscript",
+      "*.zprofile": "shellscript",
+      ".p10k.zsh": "shellscript",
+      "*.env": "dotenv",
+      "*.env.*": "dotenv"
+    },
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "dotfiles.repository": "~/.dotfiles",
+    "dotfiles.targetPath": "~"
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-vscode.vscode-json",
+      "timonwong.shellcheck",
+      "foxundermoon.shell-format",
+      "mikestead.dotenv",
+      "redhat.vscode-yaml",
+      "ms-vscode.sublime-keybindings"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "dot status",
+        "type": "shell",
+        "command": "dot",
+        "args": ["status"],
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "dot add current file",
+        "type": "shell",
+        "command": "dot",
+        "args": ["add", "${relativeFile}"],
+        "group": "build"
+      },
+      {
+        "label": "dot commit",
+        "type": "shell",
+        "command": "dot",
+        "args": ["commit"],
+        "group": "build"
+      },
+      {
+        "label": "dot push",
+        "type": "shell",
+        "command": "dot",
+        "args": ["push"],
+        "group": "build"
+      },
+      {
+        "label": "reload secrets",
+        "type": "shell",
+        "command": "source",
+        "args": ["~/.zsh.secrets"],
+        "group": "build"
+      }
+    ]
+  }
+}
