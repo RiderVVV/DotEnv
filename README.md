@@ -16,6 +16,7 @@
 ├── vscode/         # VSCode 配置
 ├── ghostty/        # Ghostty 终端配置
 ├── zed/            # Zed 编辑器配置
+├── cursor/         # Cursor 编辑器配置
 ├── secrets/        # 密钥模板文件
 ├── scripts/        # 管理脚本
 └── stow-manager.sh # Stow 管理脚本
@@ -147,6 +148,7 @@ op item list --tags dotfiles
 ├── .config/
 │   ├── ghostty/         # Ghostty 终端配置
 │   ├── zed/             # Zed 编辑器配置
+│   ├── cursor/          # Cursor 编辑器配置
 │   └── git/             # Git 配置
 ├── .secrets.d.template/ # Secrets 模板
 │   ├── load-from-1password.sh

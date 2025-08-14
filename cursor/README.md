@@ -17,13 +17,33 @@ cursor/
 
 ## 使用方法
 
-### 安装 Cursor 配置
+### 🚀 快速安装（已有 dotfiles 环境）
+
+如果你已经克隆了这个 dotfiles 仓库并且配置了 1Password CLI：
 
 ```bash
-# 使用 Stow 安装基础配置文件到 ~/.config/cursor/
+# 1. 使用 Stow 安装基础配置文件到 ~/.config/cursor/
 ./stow-manager.sh install cursor
 
-# 使用特殊脚本创建到 Cursor 应用目录的符号链接
+# 2. 使用特殊脚本创建到 Cursor 应用目录的符号链接
+./cursor/stow-cursor.sh link
+```
+
+### 🆕 全新安装（新环境）
+
+如果你是第一次在新机器上设置：
+
+```bash
+# 1. 安装依赖
+brew install stow
+brew install 1password/tap/1password-cli
+
+# 2. 克隆 dotfiles 仓库
+git clone https://github.com/RiderVVV/DotEnv.git ~/.dotfiles
+cd ~/.dotfiles
+
+# 3. 安装 Cursor 配置
+./stow-manager.sh install cursor
 ./cursor/stow-cursor.sh link
 ```
 
