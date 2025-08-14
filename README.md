@@ -1,6 +1,62 @@
 # Dotfiles 🏠
 
-基于 bare repository 和 1Password CLI 的安全 dotfiles 管理方案。
+基于 GNU Stow 和 1Password CLI 的安全 dotfiles 管理方案。
+
+## 🎯 GNU Stow 管理方式
+
+现在使用 GNU Stow 来管理配置文件，通过符号链接的方式将配置文件链接到正确的位置。
+
+### 📦 配置包结构
+
+```
+~/.dotfiles/
+├── shell/          # Shell 配置 (.zshrc, .bash_profile, etc.)
+├── git/            # Git 配置 (.gitconfig, ignore 文件)
+├── vim/            # Vim 配置 (.vimrc)
+├── vscode/         # VSCode 配置
+├── ghostty/        # Ghostty 终端配置
+├── zed/            # Zed 编辑器配置
+├── secrets/        # 密钥模板文件
+├── scripts/        # 管理脚本
+└── stow-manager.sh # Stow 管理脚本
+```
+
+### 🛠️ 使用 Stow 管理器
+
+我们提供了一个便捷的管理脚本：
+
+```bash
+# 查看所有包状态
+./stow-manager.sh status
+
+# 安装所有配置包
+./stow-manager.sh install
+
+# 安装特定配置包
+./stow-manager.sh install shell git
+
+# 卸载配置包
+./stow-manager.sh uninstall vscode
+
+# 重新安装配置包
+./stow-manager.sh restow shell
+
+# 查看可用包
+./stow-manager.sh list
+
+# 显示帮助
+./stow-manager.sh help
+```
+
+### 📥 安装依赖
+
+```bash
+# 安装 GNU Stow
+brew install stow
+
+# 安装 1Password CLI
+brew install 1password/tap/1password-cli
+```
 
 ## 🚀 快速开始
 
