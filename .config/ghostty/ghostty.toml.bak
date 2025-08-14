@@ -1,0 +1,12 @@
+# 字体
+font = { family = "MesloLGS Nerd Font", size = 14 }
+# 主题
+palette = "kanagawa_dragon"
+# 性能
+renderer = "metal"
+# UX
+cursor_style = "beam"
+scrollback_lines = 50000
+# 键位 (⌘+t/new tab)
+[keyboard]
+"cmd+t" = "new_tab"
