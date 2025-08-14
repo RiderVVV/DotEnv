@@ -5,13 +5,12 @@
 
 # 缓存文件路径
 SECRETS_CACHE="$HOME/.cache/dotfiles-secrets"
-CACHE_TTL=3600  # 1小时缓存
 
 # 创建缓存目录（静默）
 mkdir -p "$(dirname "$SECRETS_CACHE")" 2>/dev/null
 
-# 检查缓存是否有效
-if [ -f "$SECRETS_CACHE" ] && [ $(($(date +%s) - $(stat -f %m "$SECRETS_CACHE" 2>/dev/null || echo 0))) -lt $CACHE_TTL ]; then
+# 检查缓存是否存在（永久有效，除非手动清除）
+if [ -f "$SECRETS_CACHE" ]; then
     # 从缓存加载（静默）
     source "$SECRETS_CACHE" 2>/dev/null
     return 0

@@ -4,7 +4,6 @@
 # 用法: ./scripts/manage-secrets-cache.sh [clear|refresh|status]
 
 SECRETS_CACHE="$HOME/.cache/dotfiles-secrets"
-CACHE_TTL=3600  # 1小时
 
 show_help() {
     echo "用法: $0 [COMMAND]"
@@ -16,7 +15,7 @@ show_help() {
     echo "  help     - 显示帮助"
     echo ""
     echo "缓存文件: $SECRETS_CACHE"
-    echo "缓存有效期: ${CACHE_TTL}秒 ($(($CACHE_TTL / 60))分钟)"
+    echo "缓存策略: 永久有效，需要更新时手动刷新"
 }
 
 show_status() {
@@ -27,14 +26,16 @@ show_status() {
         
         echo "📄 缓存文件: $SECRETS_CACHE"
         echo "📅 创建时间: $(date -r "$cache_time" '+%Y-%m-%d %H:%M:%S')"
-        echo "⏰ 缓存年龄: ${age}秒 ($(($age / 60))分钟)"
-        
-        if [ $age -lt $CACHE_TTL ]; then
-            remaining=$((CACHE_TTL - age))
-            echo "✅ 缓存有效 (还剩 $((remaining / 60))分钟)"
+        # 友好的时间显示
+        if [ $age -lt 3600 ]; then
+            echo "⏰ 创建于: $(($age / 60))分钟前"
+        elif [ $age -lt 86400 ]; then
+            echo "⏰ 创建于: $(($age / 3600))小时前"
         else
-            echo "❌ 缓存已过期"
+            echo "⏰ 创建于: $(($age / 86400))天前"
         fi
+        
+        echo "✅ 缓存状态: 永久有效 (手动管理)"
         
         echo ""
         echo "缓存内容预览:"
@@ -42,8 +43,15 @@ show_status() {
         
         echo ""
         echo "文件大小: $(ls -lh "$SECRETS_CACHE" | awk '{print $5}')"
+        
+        echo ""
+        echo "📝 管理提示:"
+        echo "  - 缓存永久有效，不会自动过期"
+        echo "  - 需要更新 secrets 时运行: refresh"
+        echo "  - 只有手动 clear 或 refresh 才会重新认证"
     else
         echo "❌ 缓存文件不存在"
+        echo "📝 首次使用时会自动从 1Password 加载并创建缓存"
     fi
 }
 

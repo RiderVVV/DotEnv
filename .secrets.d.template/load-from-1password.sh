@@ -5,16 +5,15 @@
 
 # 缓存文件路径
 SECRETS_CACHE="$HOME/.cache/dotfiles-secrets"
-CACHE_TTL=3600  # 1小时缓存
 
 # 创建缓存目录
 mkdir -p "$(dirname "$SECRETS_CACHE")"
 
-# 检查缓存是否有效
-if [ -f "$SECRETS_CACHE" ] && [ $(($(date +%s) - $(stat -f %m "$SECRETS_CACHE" 2>/dev/null || echo 0))) -lt $CACHE_TTL ]; then
+# 检查缓存是否存在（永久有效，除非手动清除）
+if [ -f "$SECRETS_CACHE" ]; then
     # 从缓存加载
     source "$SECRETS_CACHE"
-    echo "📦 从缓存加载 secrets ($(ls -la "$SECRETS_CACHE" | awk '{print $6, $7, $8}'))"
+    echo "📦 从缓存加载 secrets ($(date -r $(stat -f %m "$SECRETS_CACHE") '+%Y-%m-%d %H:%M:%S'))"
     return 0
 fi
 
@@ -79,7 +78,7 @@ if [ -s "$temp_secrets" ]; then
     [ -n "$JUMPSERVER_PASSWORD" ] && ((loaded_count++))
     [ -n "$RACK_PASSWORD" ] && ((loaded_count++))
     
-    echo "✅ 从 1Password 加载了 $loaded_count 个 secrets（已缓存 1 小时）"
+    echo "✅ 从 1Password 加载了 $loaded_count 个 secrets（已永久缓存，需要更新时手动刷新）"
 else
     rm -f "$temp_secrets"
     echo "⚠️ 未能从 1Password 加载任何 secrets，请检查条目名称和权限"
