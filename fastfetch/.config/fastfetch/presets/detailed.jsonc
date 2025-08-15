@@ -72,12 +72,9 @@
       "string": "───────────────────────────────────────"
     },
     {
-      "type": "cpu",
-      "key": " 🧠 CPU",
-      "keyColor": "red",
-      "showPeCoreCount": true,
-      "temp": true,
-      "freqNdigits": 2
+      "type": "cpuusage",
+      "key": " 🧠 CPU Usage",
+      "keyColor": "red"
     },
     {
       "type": "gpu",

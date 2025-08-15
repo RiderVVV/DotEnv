@@ -51,11 +51,9 @@
       "keyColor": "magenta"
     },
     {
-      "type": "cpu",
+      "type": "cpuusage",
       "key": " 🧠",
-      "keyColor": "red",
-      "showPeCoreCount": true,
-      "temp": true
+      "keyColor": "red"
     },
     {
       "type": "memory",
