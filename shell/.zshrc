@@ -263,11 +263,11 @@ alias paste='pbpaste'                 # Paste from clipboard
 # └─────────────────────────────────────────────────────────────────────────┘
 
 # === Dotfiles Management ===
-alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias dots='dot status'
-alias dota='dot add'
-alias dotc='dot commit -m'
-alias dotp='dot push'
+# Dotfiles management - using regular git in ~/.dotfiles directory
+alias dots="cd ~/.dotfiles && git status"
+alias dota="cd ~/.dotfiles && git add"
+alias dotc="cd ~/.dotfiles && git commit -m"
+alias dotp="cd ~/.dotfiles && git push"
 
 # === Enhanced cd with auto ls ===
 cd() {
