@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-# ═══════════════════════════════════════════════════════════════════════════
-# 🚀 Terminal Welcome Interface - Fastfetch Edition
-# ═══════════════════════════════════════════════════════════════════════════
-
-# This file now redirects to the new Fastfetch-based welcome system
-source "$HOME/.dotfiles/terminal-welcome/welcome.sh"

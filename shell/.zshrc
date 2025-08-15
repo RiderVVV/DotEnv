@@ -543,10 +543,8 @@ tips=(
 # Command to show a random tip
 alias tip='echo "${tips[$RANDOM % ${#tips[@]}]}"'
 
-# Welcome screen commands
-alias welcome='$HOME/.dotfiles/bin/welcome-enhanced'  # Enhanced welcome with options
-alias welcome-old='source ~/.zsh_welcome'  # Old custom welcome
-alias welcome-simple='$HOME/.dotfiles/bin/welcome'  # Simple fastfetch + quote
+# Welcome screen command
+alias welcome='source ~/.dotfiles/terminal-welcome/welcome.sh'  # Manual welcome display
 
 # ┌─────────────────────────────────────────────────────────────────────────┐
 # │ 🎉 Terminal Welcome Screen (Shows on every terminal)                   │

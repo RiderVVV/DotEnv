@@ -1,19 +1,19 @@
 #!/usr/bin/env zsh
 # ═══════════════════════════════════════════════════════════════════════════
-# 🚀 Terminal Welcome - Main Integration Script
+# 🚀 Terminal Welcome - Fastfetch + Quotes
 # ═══════════════════════════════════════════════════════════════════════════
 
 # Exit if not interactive shell
 [[ $- != *i* ]] && return
+
+# Check if welcome should be disabled
+[[ "${WELCOME_DISABLED}" == "true" ]] && return
 
 # Configuration
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-${(%):-%x}}")" && pwd)"
 FASTFETCH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/config.jsonc"
 FASTFETCH_PRESETS="${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/presets"
 QUOTE_LOADER="${SCRIPT_DIR}/quote-loader.sh"
-
-# Check if welcome should be disabled
-[[ "${WELCOME_DISABLED}" == "true" ]] && return
 
 # Function to detect environment
 detect_environment() {
@@ -75,18 +75,8 @@ show_welcome() {
         config_file="${FASTFETCH_PRESETS}/${preset}.jsonc"
     fi
     
-    # Clear screen for better presentation (optional)
-    # clear
-    
     # Show system info with fastfetch
-    if command -v fastfetch &>/dev/null; then
-        fastfetch --config "${config_file}" 2>/dev/null || fastfetch
-    else
-        # Fallback to basic info if fastfetch not available
-        echo "  System: $(uname -s) $(uname -r)"
-        echo "  Shell: ${SHELL##*/}"
-        echo "  User: ${USER}@$(hostname -s)"
-    fi
+    fastfetch --config "${config_file}" 2>/dev/null || fastfetch
     
     # Add separator
     echo ""
@@ -99,8 +89,6 @@ show_welcome() {
     if [[ -x "${QUOTE_LOADER}" ]]; then
         local quote=$("${QUOTE_LOADER}" 2>/dev/null)
         if [[ -n "$quote" ]]; then
-            # Simple and elegant quote display
-            echo ""
             echo "  💭 $quote"
             echo ""
         fi
