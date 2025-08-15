@@ -553,6 +553,7 @@ alias welcome='source ~/.dotfiles/terminal-welcome/welcome.sh'  # Manual welcome
 # P10k instant prompt is disabled to allow this to work properly
 if [[ $- == *i* ]] && [[ -z "$WELCOME_SHOWN" ]]; then
     export WELCOME_SHOWN=1
+    export WELCOME_SHOW_TIPS=true  # Enable tips display
     source ~/.dotfiles/terminal-welcome/welcome.sh
 fi
 

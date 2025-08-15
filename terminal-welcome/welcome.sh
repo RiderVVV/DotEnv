@@ -3,8 +3,8 @@
 # 🚀 Terminal Welcome - Fastfetch + Quotes
 # ═══════════════════════════════════════════════════════════════════════════
 
-# Exit if not interactive shell
-[[ $- != *i* ]] && return
+# Exit if not interactive shell (commented for testing)
+# [[ $- != *i* ]] && return
 
 # Check if welcome should be disabled
 [[ "${WELCOME_DISABLED}" == "true" ]] && return
@@ -75,10 +75,10 @@ show_welcome() {
         config_file="${FASTFETCH_PRESETS}/${preset}.jsonc"
     fi
     
-    # Show system info with fastfetch
+    # Show system info with fastfetch (no logo)
     fastfetch --config "${config_file}" 2>/dev/null || fastfetch
     
-    # Add separator
+    # Add separator after system info
     echo ""
     
     # Show git status if in repository
@@ -89,19 +89,21 @@ show_welcome() {
     if [[ -x "${QUOTE_LOADER}" ]]; then
         local quote=$("${QUOTE_LOADER}" 2>/dev/null)
         if [[ -n "$quote" ]]; then
-            echo "  💭 $quote"
-            echo ""
+            echo " 💭 │ $quote"
+        else
+            echo " 💭 │ Code is poetry. 代码如诗。"  # Fallback quote
         fi
+    else
+        echo " 💭 │ Stay curious, keep coding."  # Default if loader not found
     fi
     
     # Show quick tips if enabled
     if [[ "${WELCOME_SHOW_TIPS}" == "true" ]]; then
-        echo "  💡 Quick commands: z <dir> | ll | gs | gd | tip"
-        echo ""
+        echo " 💡 │ Quick commands: z <dir> | ll | gs | gd | tip"
     fi
     
     # Show date and time
-    echo "  📅 $(date '+%A, %B %d, %Y @ %H:%M:%S')"
+    echo " 📅 │ $(date '+%A, %B %d, %Y @ %H:%M:%S')"
     echo ""
 }
 

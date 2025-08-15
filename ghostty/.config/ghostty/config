@@ -1,109 +1,104 @@
-# Ghostty 视觉配置 - 优化版
+# Ghostty 优化配置 - 基于 PRD 平衡方案
 # 作者: Eric
-# 更新时间: 2025-01-01
+# 更新时间: 2025-01-15
+# 版本: Balanced Configuration
 
-# ========== 基础视觉效果 ==========
-# 背景透明度 (0.0-1.0)
-background-opacity = 0.9
+# ========== 主题系统 ==========
+# 自动切换深色/浅色主题
+theme = light:rose-pine-dawn,dark:Everforest Dark - Hard
+window-theme = auto
 
-# 背景模糊强度 (建议 10-30)
-background-blur = 25
+# ========== 字体配置 ==========
+# 主字体和回退字体
+font-family = JetBrainsMono Nerd Font
+font-family = SF Pro
+font-family = Symbols Nerd Font
+font-family = Apple Color Emoji
+font-size = 16
 
-# ========== 光标配置 ==========
-# 光标样式: block, bar, underline, block_hollow
-cursor-style = bar
+# 启用编程连字符
+font-feature = +liga
 
-# 光标闪烁 (true/false/留空为默认)
-cursor-style-blink = true
+# ========== 视觉效果 ==========
+# 背景透明度和模糊
+background-opacity = 0.92
+background-blur = 20
 
-# 光标透明度
-cursor-opacity = 0.8
+# 高级颜色设置
+window-colorspace = display-p3
+alpha-blending = linear-corrected
+minimum-contrast = 1.1
 
-# 光标颜色 (可选)
-# cursor-color = #61afef
-
-# ========== 窗口和动画 ==========
-# 快速终端动画时长 (秒)
-quick-terminal-animation-duration = 0.25
-
-# 窗口垂直同步 (减少撕裂但可能增加延迟)
-window-vsync = true
-
-# 窗口填充
-window-padding-x = 4
-window-padding-y = 4
+# ========== 窗口和布局 ==========
+# 窗口内边距
+window-padding-x = 8
+window-padding-y = 8
 window-padding-balance = true
 window-padding-color = extend
 
-# ========== macOS 特定视觉效果 ==========
-# 标题栏样式: native, transparent, tabs, hidden
-macos-titlebar-style = transparent
-# 窗口阴影
-macos-window-shadow = true
-# 非原生全屏 (更快但无标签支持)
-macos-non-native-fullscreen = false
-
-# ========== 分屏和焦点效果 ==========
-# 未聚焦分屏透明度
-unfocused-split-opacity = 0.6
-# 分屏分割线颜色
-# split-divider-color = #3e4451
-
-# ========== 自定义着色器动画 ==========
-# 启用着色器动画 (仅在有自定义着色器时)
-custom-shader-animation = true
-
-# ========== 字体和主题 ==========
-# 主题 (支持 light:theme1,dark:theme2 语法)
-theme = Ghostty Default StyleDark
-
-# 字体配置
-font-family = "SF Mono"
-font-size = 14
-# 字体加厚 (仅 macOS)
-font-thicken = false
-
-# ========== 颜色配置 ==========
-# 主背景和前景色 (可选，覆盖主题)
-# background = #1e1e1e
-# foreground = #abb2bf
-
-# 选择文本颜色
-# selection-background = #3d4148
-# selection-foreground = #ffffff
-
-# ========== 其他视觉优化 ==========
-# 最小对比度 (1-21, 避免不可见文本)
-minimum-contrast = 1.1
-
-# Alpha 混合模式: native, linear, linear-corrected
-alpha-blending = linear-corrected
-
-# 颜色空间: srgb, display-p3
-window-colorspace = display-p3
-
-# 窗口主题: auto, system, light, dark, ghostty
+# 窗口主题跟随系统
 window-theme = auto
 
-# ========== 交互优化 ==========
-# 鼠标悬停时隐藏
-mouse-hide-while-typing = true
-# 焦点跟随鼠标 (分屏时)
-focus-follows-mouse = false
-# 点击重复间隔 (毫秒)
-click-repeat-interval = 400
+# 垂直同步以获得平滑滚动
+window-vsync = true
 
-# ========== 高级功能 ==========
+# ========== 光标配置 ==========
+cursor-style = bar
+cursor-style-blink = true
+cursor-opacity = 0.9
+
+# ========== 分屏管理 ==========
+# 未聚焦分屏透明度
+unfocused-split-opacity = 0.85
+
+# ========== macOS 特性 ==========
+# 透明标题栏
+macos-titlebar-style = transparent
+
+# 窗口阴影
+macos-window-shadow = true
+
+# Option 键作为 Alt
+macos-option-as-alt = true
+
+# ========== Shell 集成 ==========
+# 自动检测并启用 shell 集成
+shell-integration = detect
+
+# ========== 生产力功能 ==========
+# 选中即复制
+copy-on-select = true
+
+# 剪贴板保护
+clipboard-paste-protection = true
+
+# 鼠标输入时隐藏
+mouse-hide-while-typing = true
+
+# 焦点不跟随鼠标
+focus-follows-mouse = false
+
+# 点击重复间隔
+click-repeat-interval = 300
+
+# ========== 动画优化 ==========
+# 快速终端动画
+quick-terminal-animation-duration = 0.25
+
 # 调整大小覆盖层
 resize-overlay = after-first
 resize-overlay-position = center
 resize-overlay-duration = 500ms
 
-# 复制选择时自动复制到剪贴板
-copy-on-select = true
-# 剪贴板保护
-clipboard-paste-protection = true
 
-# ========== 启动命令 ==========
-# 初始命令已移至 .zshrc 中，确保每个终端都显示欢迎界面
-# initial-command = zsh  # 直接启动zsh，欢迎界面由.zshrc处理
+# ========== 性能优化 ==========
+# 自定义着色器动画
+custom-shader-animation = true
+
+# ========== 开发者功能 ==========
+# 启用链接检测
+link-url = true
+
+# ========== 安全功能 ==========
+# 禁用标题报告（安全考虑）
+title-report = false

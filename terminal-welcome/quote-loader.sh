@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 # ═══════════════════════════════════════════════════════════════════════════
 # 💭 Quote Loader - High-performance quote system for terminal welcome
 # ═══════════════════════════════════════════════════════════════════════════
@@ -6,7 +6,7 @@
 set -euo pipefail
 
 # Configuration
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${(%):-%x}")" && pwd)"
 QUOTES_DIR="${SCRIPT_DIR}/quotes.d"
 CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/welcome-quotes"
 CACHE_TTL=86400  # 24 hours for API cache
@@ -61,7 +61,7 @@ select_quote() {
     # Filter out recently used quotes if history exists
     if [[ -f "$history_file" ]] && [[ ${#quotes[@]} -gt $HISTORY_SIZE ]]; then
         # Read history into associative array for O(1) lookup
-        declare -A history_map
+        typeset -A history_map
         while IFS= read -r line; do
             history_map["$line"]=1
         done < "$history_file"
