@@ -105,6 +105,5 @@ copy-on-select = true
 clipboard-paste-protection = true
 
 # ========== 启动命令 ==========
-# 初始命令 - 仅在第一个终端窗口启动时运行
-# 显示欢迎屏幕，然后启动 zsh
-initial-command = zsh -c "source ~/.dotfiles/terminal-welcome/welcome.sh; exec zsh"
+# 初始命令已移至 .zshrc 中，确保每个终端都显示欢迎界面
+# initial-command = zsh  # 直接启动zsh，欢迎界面由.zshrc处理

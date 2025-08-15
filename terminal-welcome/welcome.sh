@@ -99,13 +99,9 @@ show_welcome() {
     if [[ -x "${QUOTE_LOADER}" ]]; then
         local quote=$("${QUOTE_LOADER}" 2>/dev/null)
         if [[ -n "$quote" ]]; then
-            # Format quote with nice presentation
-            echo "  ╭────────────────────────────────────────────────────╮"
-            # Wrap quote to fit in box (50 chars width)
-            echo "$quote" | fold -s -w 50 | while IFS= read -r line; do
-                printf "  │ %-50s │\n" "$line"
-            done
-            echo "  ╰────────────────────────────────────────────────────╯"
+            # Simple and elegant quote display
+            echo ""
+            echo "  💭 $quote"
             echo ""
         fi
     fi

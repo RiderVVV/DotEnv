@@ -548,9 +548,14 @@ alias welcome='$HOME/.dotfiles/bin/welcome-enhanced'  # Enhanced welcome with op
 alias welcome-old='source ~/.zsh_welcome'  # Old custom welcome
 alias welcome-simple='$HOME/.dotfiles/bin/welcome'  # Simple fastfetch + quote
 
-# Note: Welcome screen is now handled by Ghostty's initial-command
-# This avoids conflicts with Powerlevel10k instant prompt
-# The welcome screen shows only on the first terminal window via Ghostty config
+# ┌─────────────────────────────────────────────────────────────────────────┐
+# │ 🎉 Terminal Welcome Screen (Shows on every terminal)                   │
+# └─────────────────────────────────────────────────────────────────────────┘
+# Display welcome screen for every new terminal session
+if [[ $- == *i* ]] && [[ -z "$WELCOME_SHOWN" ]]; then
+    export WELCOME_SHOWN=1
+    source ~/.dotfiles/terminal-welcome/welcome.sh
+fi
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 🎯 Configuration Complete!
