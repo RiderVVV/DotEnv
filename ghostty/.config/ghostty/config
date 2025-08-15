@@ -102,3 +102,7 @@ link-url = true
 # ========== 安全功能 ==========
 # 禁用标题报告（安全考虑）
 title-report = false
+
+# ========== 退出设置 ==========
+# 禁用退出确认弹窗
+confirm-close-surface = false
