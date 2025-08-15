@@ -11,11 +11,11 @@
 # ┌─────────────────────────────────────────────────────────────────────────┐
 # │ ⚡ Powerlevel10k Instant Prompt (Must be early in config)              │
 # └─────────────────────────────────────────────────────────────────────────┘
-# Set Powerlevel10k to quiet mode FIRST (must be before everything)
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# Disable instant prompt to allow welcome screen display
+# This trades startup speed for the ability to show the welcome screen
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+# Note: We've disabled instant prompt to allow the welcome screen to display
+# If you want faster startup without welcome screen, change 'off' to 'quiet'
 
 # ┌─────────────────────────────────────────────────────────────────────────┐
 # │ 🎨 Oh My ZSH Configuration                                             │
@@ -552,6 +552,7 @@ alias welcome-simple='$HOME/.dotfiles/bin/welcome'  # Simple fastfetch + quote
 # │ 🎉 Terminal Welcome Screen (Shows on every terminal)                   │
 # └─────────────────────────────────────────────────────────────────────────┘
 # Display welcome screen for every new terminal session
+# P10k instant prompt is disabled to allow this to work properly
 if [[ $- == *i* ]] && [[ -z "$WELCOME_SHOWN" ]]; then
     export WELCOME_SHOWN=1
     source ~/.dotfiles/terminal-welcome/welcome.sh
