@@ -1,0 +1,98 @@
+#!/usr/bin/env zsh
+# ═══════════════════════════════════════════════════════════════════════════
+# 🚀 Eric's ZSH Welcome Screen - Elegant Minimalist
+# ═══════════════════════════════════════════════════════════════════════════
+
+# Color definitions
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+MAGENTA='\033[0;35m'
+CYAN='\033[0;36m'
+WHITE='\033[0;37m'
+BOLD='\033[1m'
+RESET='\033[0m'
+DIM='\033[2m'
+ORANGE='\033[38;5;208m'
+
+# Gradient colors
+GRADIENT=(
+    '\033[38;5;196m'  # Red
+    '\033[38;5;202m'  # Orange  
+    '\033[38;5;226m'  # Yellow
+    '\033[38;5;46m'   # Green
+    '\033[38;5;51m'   # Cyan
+    '\033[38;5;21m'   # Blue
+    '\033[38;5;165m'  # Purple
+)
+
+# Random welcome messages
+get_welcome_message() {
+    local messages=(
+        "代码是用逻辑书写的诗歌"
+        "今天写点什么呢？"
+        "让我们创造一些神奇的东西"
+        "准备好改变世界了吗？"
+        "代码的艺术，思维的舞蹈"
+    )
+    local idx=$((RANDOM % ${#messages[@]} + 1))
+    echo "${messages[$idx]}"
+}
+
+# Main display
+show_welcome() {
+    echo ""
+    
+    # Gradient banner
+    echo -n "    "
+    for color in $GRADIENT; do
+        echo -n "${color}━━━━━━━━━━${RESET}"
+    done
+    echo ""
+    echo ""
+    
+    # Compact ASCII art
+    echo "    ${GRADIENT[1]}╭─────────────────────────────────────────────────────────────╮${RESET}"
+    echo "    ${GRADIENT[2]}│                                                             │${RESET}"
+    echo "    ${GRADIENT[3]}│     ███████╗██████╗ ██╗ ██████╗    ███████╗███████╗██╗     │${RESET}"
+    echo "    ${GRADIENT[4]}│     ██╔════╝██╔══██╗██║██╔════╝    ╚══███╔╝██╔════╝██║     │${RESET}"
+    echo "    ${GRADIENT[5]}│     █████╗  ██████╔╝██║██║           ███╔╝ ███████╗███████╗│${RESET}"
+    echo "    ${GRADIENT[6]}│     ██╔══╝  ██╔══██╗██║██║          ███╔╝  ╚════██║██╔══██║│${RESET}"
+    echo "    ${GRADIENT[7]}│     ███████╗██║  ██║██║╚██████╗    ███████╗███████║██║  ██║│${RESET}"
+    echo "    ${GRADIENT[1]}│     ╚══════╝╚═╝  ╚═╝╚═╝ ╚═════╝    ╚══════╝╚══════╝╚═╝  ╚═╝│${RESET}"
+    echo "    ${GRADIENT[2]}│                                                             │${RESET}"
+    echo "    ${GRADIENT[3]}╰─────────────────────────────────────────────────────────────╯${RESET}"
+    echo ""
+    
+    # Welcome message
+    echo "                  ${BOLD}${WHITE}欢迎回来, Eric!${RESET}  $(date '+%A, %B %d @ %H:%M')"
+    local msg=$(get_welcome_message)
+    echo "                        ${DIM}\"${msg}\"${RESET}"
+    echo ""
+    
+    # System stats in single line
+    local uptime=$(uptime | sed 's/.*up \([^,]*\),.*/\1/')
+    local mem_free=$(vm_stat | grep "Pages free" | awk '{print $3}' | sed 's/\.//')
+    local mem_inactive=$(vm_stat | grep "Pages inactive" | awk '{print $3}' | sed 's/\.//')
+    local mem_available_gb=$(echo "scale=1; ($mem_free + $mem_inactive) * 4096 / 1024 / 1024 / 1024" | bc 2>/dev/null || echo "?")
+    local load_avg=$(uptime | awk -F'load average:' '{print $2}' | xargs)
+    
+    echo "    ${GREEN}󰔛${RESET} Up $uptime  ${MAGENTA}󰍛${RESET} ${mem_available_gb}GB available  ${ORANGE}󰊚${RESET} Load: $load_avg"
+    
+    # Git status if in repo
+    if git rev-parse --git-dir > /dev/null 2>&1; then
+        local branch=$(git branch --show-current 2>/dev/null)
+        local changes=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
+        
+        echo -n "    ${GREEN}󰊢${RESET} $branch"
+        [[ $changes -gt 0 ]] && echo -n "  ${YELLOW}●${RESET} $changes uncommitted"
+        echo ""
+    fi
+    
+    echo ""
+    echo "    ${DIM}Quick: ${GREEN}z${RESET}${DIM} <dir>  ${GREEN}tip${RESET}${DIM}  ${GREEN}todo${RESET}${DIM}  ${GREEN}note${RESET}${DIM}  ${GREEN}weather${RESET}"
+    echo ""
+}
+
+# Show welcome
+show_welcome
