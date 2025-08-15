@@ -543,8 +543,10 @@ tips=(
 # Command to show a random tip
 alias tip='echo "${tips[$RANDOM % ${#tips[@]}]}"'
 
-# Welcome screen command (manual trigger)
-alias welcome='source ~/.zsh_welcome'
+# Welcome screen commands
+alias welcome='$HOME/.dotfiles/bin/welcome-enhanced'  # Enhanced welcome with options
+alias welcome-old='source ~/.zsh_welcome'  # Old custom welcome
+alias welcome-simple='$HOME/.dotfiles/bin/welcome'  # Simple fastfetch + quote
 
 # Note: Welcome screen is now handled by Ghostty's initial-command
 # This avoids conflicts with Powerlevel10k instant prompt

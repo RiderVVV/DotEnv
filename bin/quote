@@ -1,0 +1,97 @@
+#!/bin/bash
+
+# Simple quote fetcher script
+# Replaces deprecated quote-cli with direct API calls
+
+# Color definitions
+CYAN='\033[0;36m'
+WHITE='\033[0;37m'
+DIM='\033[2m'
+RESET='\033[0m'
+BOLD='\033[1m'
+BLUE='\033[0;34m'
+
+# Function to wrap text
+wrap_text() {
+    local text="$1"
+    local width="${2:-60}"
+    echo "$text" | fold -s -w "$width"
+}
+
+# Function to draw a box around text
+draw_box() {
+    local text="$1"
+    local max_width=60
+    local lines=()
+    
+    # Wrap the text and store in array
+    while IFS= read -r line; do
+        lines+=("$line")
+    done <<< "$(wrap_text "$text" $((max_width - 4)))"
+    
+    # Find the longest line
+    local max_len=0
+    for line in "${lines[@]}"; do
+        local len=${#line}
+        if [ $len -gt $max_len ]; then
+            max_len=$len
+        fi
+    done
+    
+    # Calculate box width
+    local box_width=$((max_len + 4))
+    
+    # Draw top border
+    echo -ne "${CYAN}┌"
+    for ((i=0; i<box_width-2; i++)); do echo -n "─"; done
+    echo -e "┐${RESET}"
+    
+    # Draw text lines
+    for line in "${lines[@]}"; do
+        local padding=$((box_width - 4 - ${#line}))
+        echo -ne "${CYAN}│${RESET}  ${WHITE}${line}${RESET}"
+        for ((i=0; i<padding; i++)); do echo -n " "; done
+        echo -e "  ${CYAN}│${RESET}"
+    done
+    
+    # Draw bottom border
+    echo -ne "${CYAN}└"
+    for ((i=0; i<box_width-2; i++)); do echo -n "─"; done
+    echo -e "┘${RESET}"
+}
+
+# Function to get quote from different APIs
+get_quote() {
+    local quote=""
+    local author=""
+    
+    # Try ZenQuotes first (more generous rate limits)
+    response=$(curl -s --connect-timeout 2 --max-time 3 "https://zenquotes.io/api/random" 2>/dev/null)
+    if [[ -n "$response" ]] && [[ ! "$response" =~ "Too many requests" ]]; then
+        quote=$(echo "$response" | sed 's/\[{//;s/}\]//;s/","/\n/g' | grep '"q":' | cut -d'"' -f4)
+        author=$(echo "$response" | sed 's/\[{//;s/}\]//;s/","/\n/g' | grep '"a":' | cut -d'"' -f4)
+    fi
+    
+    # Fallback to Quotable API
+    if [[ -z "$quote" ]]; then
+        response=$(curl -s --connect-timeout 2 --max-time 3 "https://api.quotable.io/random?maxLength=150" 2>/dev/null)
+        if [[ -n "$response" ]]; then
+            quote=$(echo "$response" | grep -o '"content":"[^"]*' | cut -d'"' -f4)
+            author=$(echo "$response" | grep -o '"author":"[^"]*' | cut -d'"' -f4)
+        fi
+    fi
+    
+    # Display the quote in a box
+    if [[ -n "$quote" ]]; then
+        draw_box "$quote"
+        if [[ -n "$author" ]] && [[ "$author" != "null" ]]; then
+            echo -e "${DIM}${CYAN}    — $author${RESET}"
+        fi
+    else
+        # Fallback message
+        echo -e "${DIM}No quote available at this moment.${RESET}"
+    fi
+}
+
+# Main execution
+get_quote

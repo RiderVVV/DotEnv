@@ -1,0 +1,38 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "small"
+  },
+  "display": {
+    "separator": " : "
+  },
+  "modules": [
+    {
+      "type": "title",
+      "format": "{user-name}@{host-name}"
+    },
+    {
+      "type": "separator",
+      "string": "───────────"
+    },
+    {
+      "type": "os",
+      "key": "OS"
+    },
+    {
+      "type": "uptime",
+      "key": "Up"
+    },
+    {
+      "type": "memory",
+      "key": "Mem",
+      "format": "{percent}"
+    },
+    {
+      "type": "disk",
+      "key": "Disk",
+      "folders": "/",
+      "format": "{percent}"
+    }
+  ]
+}

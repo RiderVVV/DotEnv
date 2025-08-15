@@ -1,0 +1,21 @@
+# Technology Quotes
+Code is poetry.
+Make it work, make it right, make it fast.
+Simplicity is the ultimate sophistication.
+First, solve the problem. Then, write the code.
+Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
+The best way to predict the future is to invent it.
+Programming isn't about what you know; it's about what you can figure out.
+The only way to learn a new programming language is by writing programs in it.
+Code never lies, comments sometimes do.
+Before software can be reusable it first has to be usable.
+Walking on water and developing software from a specification are easy if both are frozen.
+The best performance improvement is the transition from the nonworking state to the working state.
+Deleted code is debugged code.
+One man's crappy software is another man's full-time job.
+It's not a bug; it's an undocumented feature.
+Software and cathedrals are much the same — first we build them, then we pray.
+There are only two kinds of languages: the ones people complain about and the ones nobody uses.
+If debugging is the process of removing bugs, then programming must be the process of putting them in.
+Talk is cheap. Show me the code.
+Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away.

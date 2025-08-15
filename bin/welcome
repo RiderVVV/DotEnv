@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Terminal Welcome with Quote and System Info
+# Combines custom quote fetcher with fastfetch
+
+# Display a quote first
+echo ""
+$(dirname "$0")/quote
+echo ""
+
+# Then show system info with fastfetch
+fastfetch
+
+# Optional: Add a tip at the end
+tips=(
+    "💡 Use 'z <dir>' to quickly jump to directories"
+    "💡 Press Ctrl+R to search command history"
+    "💡 Use 'extract <archive>' to extract any format"
+    "💡 Type 'weather' to check the forecast"
+    "💡 Use 'todo' to manage quick tasks"
+)
+
+# Show random tip
+echo ""
+echo "${tips[$RANDOM % ${#tips[@]}]}"
